@@ -60,10 +60,9 @@ ifneq (${OSTYPE}, Cygwin)
 endif
 
 
-
 # Default target
 
-all : ${TARGET} ${SHAREDOBJ} ${LIBOBJ}
+all : ${OBJDIR} ${TARGET} ${SHAREDOBJ} ${LIBOBJ}
 
 #####################
 # Dependencies
@@ -80,29 +79,35 @@ ${OBJDIR}/main.o   : ${SRCDIR}/main.c ${SRCDIR}/main.h ${SRCDIR}/bitmap.h
 # Compile executable
 #
 ${TARGET} : ${LIBOBJ} ${OBJDIR}/main.o
-	$(CC) ${OBJDIR}/main.o -o ${TARGET} ${LDOPTS}
+	@$(CC) ${OBJDIR}/main.o -o ${TARGET} ${LDOPTS}
 
 #
 # Create shared object library
 #
 ${SHAREDOBJ} : ${OBJDIR}/bitmap.o
-	$(CC) -shared ${OBJDIR}/bitmap.o -o $@
+	@$(CC) -shared ${OBJDIR}/bitmap.o -o $@
 
 #
 # Archive the position independant object file
 #
 ${LIBOBJ}: ${OBJDIR}/bitmap.o 
-	ar -r $@ ${OBJDIR}/bitmap.o
+	@ar -r $@ ${OBJDIR}/bitmap.o
 
 #
 # Generic relocatable object rule
 #
 ${OBJDIR}/%.o : ${SRCDIR}/%.c
-	$(CC) $(COPTS) -c $< -o $@ 
+	@$(CC) $(COPTS) -c $< -o $@ 
+
+#
+# Construct object temporary directory
+#
+${OBJDIR}:
+	@mkdir -p $@
 
 #
 # Tidy up
 #
 clean: 
-	@/bin/rm -f ${TARGET} *.so *.dll *.a ${OBJDIR}/*.o
+	@/bin/rm -rf ${TARGET} *.so *.dll *.a ${OBJDIR}
 
