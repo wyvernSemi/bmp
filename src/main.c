@@ -159,7 +159,7 @@ int main(int argc, char **argv)
     // Assign some space for returned error messages
     err.errsize = ERRBUFSIZE;
     err.errnum = 0;
-    if ((err.errbuf = malloc(err.errsize)) == NULL) {
+    if ((err.errbuf = (char *)malloc(err.errsize)) == NULL) {
         fprintf(stderr, "***Error: unable to allocate memory.\n");
         return BADSTATUS;
     }

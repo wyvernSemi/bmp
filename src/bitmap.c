@@ -55,7 +55,7 @@ int GetBitmap(FILE *fp, pbmhdr_t *bmp, prgbquad_t *r, unsigned char **data, perr
     *data = NULL;
 
     // Get enough space for a header
-    if ((buf = malloc(HDRSIZE)) == NULL) {
+    if ((buf = (unsigned char *)malloc(HDRSIZE)) == NULL) {
         if (e != NULL) {
             snprintf(e->errbuf, e->errsize, "***Error: %s - unable to allocate memory.\n", funcname);
             e->errnum = GBMP_ERR_MEM;
@@ -84,7 +84,7 @@ int GetBitmap(FILE *fp, pbmhdr_t *bmp, prgbquad_t *r, unsigned char **data, perr
 
     // Reallocate the buffer so that the whole file will fit
     tmp_buf = buf;
-    buf = realloc(tmp_buf, (*bmp)->f.bfSize);
+    buf = (unsigned char *)realloc(tmp_buf, (*bmp)->f.bfSize);
     if (buf == NULL) {
         if (e != NULL) {
             snprintf(e->errbuf, e->errsize, "***Error: %s - unable to allocate memory.\n", funcname);
@@ -221,7 +221,7 @@ uint32_t ConvertBmpTo24bit(unsigned char **newbmp, const pbmhdr_t bmp, const prg
     o_imgsize = o_padrowlen * bmp->i.biHeight;
 
     // Allocate some memory for the new 24 bit bitmap
-    if ((*newbmp = malloc(o_imgsize + HDRSIZE)) == NULL) {
+    if ((*newbmp = (unsigned char*)malloc(o_imgsize + HDRSIZE)) == NULL) {
         if (e != NULL) {
             snprintf(e->errbuf, e->errsize, "***Error: %s - unable to allocate memory.\n", funcname);
             e->errnum = CBMP_ERR_MEM;
@@ -480,12 +480,13 @@ int TransformBmp (unsigned char *bitmap, const ptrans_t control, perrmsg_t e)
 //
 //=================================================================
 
-uint32_t ClipBitmap(char* bmp, const prect_t boundary, uint32_t *imgsize)
+uint32_t ClipBitmap(unsigned char* bmp, const prect_t boundary, uint32_t *imgsize)
 {
     uint32_t newwidth, newheight;
     uint32_t i, j, idx;
     pbmhdr_t bm;
-    char *data, *this_row;
+    unsigned char *this_row;
+    unsigned char *data;
     uint32_t i_padrowlen;
 
     bm = (pbmhdr_t) bmp;

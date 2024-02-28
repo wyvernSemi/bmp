@@ -1,8 +1,8 @@
 //=============================================================
 // bitmap.h                                  Date: 2003/04/14 
-//                                                               
+//
 // Copyright (c) 2003-2024 Simon Southwell
-//                                                               
+//
 // This file is part of bmp.
 //
 // bmp is free software: you can redistribute it and/or modify
@@ -158,7 +158,7 @@ typedef struct {
 // Exported functions
 extern int      GetBitmap         (FILE *, pbmhdr_t *, prgbquad_t *, unsigned char **, perrmsg_t);
 extern uint32_t ConvertBmpTo24bit (unsigned char **, const pbmhdr_t, const prgbquad_t, const unsigned char *, perrmsg_t);
-extern int      TransformBmp      (unsigned char *, const ptrans_t, perrmsg_t);
-extern uint32_t ClipBitmap        (char*, const prect_t, uint32_t *);
+extern int      TransformBmp      (unsigned char *,  const ptrans_t, perrmsg_t);
+extern uint32_t ClipBitmap        (unsigned char*,   const prect_t, uint32_t *);
 
 #endif
