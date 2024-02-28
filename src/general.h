@@ -1,7 +1,7 @@
 /*****************************************************************
  * general.h                                    Date: 2003/10/04 *
  *                                                               *
- * Copyright (c) 2003 Simon Southwell. All rights reserved.      *
+ * Copyright (c) 2003-2024 Simon Southwell. All rights reserved. *
  *                                                               *
  * General purpose definitions and conversions between windows   *
  * and un*x. It is not complete, and will be added too as and    *
@@ -9,16 +9,15 @@
  * added. I.e. things like MAXBUFSIZE should not creep in as     *
  * these necessarily are different between applications.         *
  *                                                               *
- *****************************************************************
- *
- * $Id: general.h,v 1.1 2010-02-02 11:50:26 simon Exp $
- * $Source: /home/simon/CVS/src/include/general.h,v $
- */
+ *****************************************************************/
 
 #ifndef _GENERAL_H_
 #define _GENERAL_H_
 
 #ifdef WIN32
+
+#define __BYTE_ORDER __LITTLE_ENDIAN
+
 #include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -29,6 +28,8 @@
 #include <strings.h>
 #include <ctype.h>
 #include <sys/types.h>
+#include <stdint.h>
+#include <endian.h>
 #endif
 
 // Only define if not already (windows.h defines this)

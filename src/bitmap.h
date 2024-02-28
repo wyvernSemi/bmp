@@ -1,7 +1,7 @@
 //=============================================================
 // bitmap.h                                  Date: 2003/04/14 
 //                                                               
-// Copyright (c) 2003 Simon Southwell
+// Copyright (c) 2003-2024 Simon Southwell
 //                                                               
 // This file is part of bmp.
 //
@@ -18,17 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with bmp. If not, see <http://www.gnu.org/licenses/>.
 //
-// $Id: bitmap.h,v 1.3 2010-07-06 13:51:11 simon Exp $
-// $Source: /home/simon/CVS/src/bitmaps/src/bitmap.h,v $
-//
 //=============================================================
-
-#ifdef _WIN32
-#define __BYTE_ORDER __LITTLE_ENDIAN
-#else
-#include <endian.h>
-#endif
-
 
 #ifndef _BITMAP_H_
 #define _BITMAP_H_

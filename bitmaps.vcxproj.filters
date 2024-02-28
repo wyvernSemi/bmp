@@ -28,7 +28,7 @@
     <ClInclude Include="src\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\general.h">
+    <ClInclude Include="src\general.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

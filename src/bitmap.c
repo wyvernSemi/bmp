@@ -1,7 +1,7 @@
 //=============================================================
 // bitmap.c                                  Date: 2003/04/14 
 //                                                               
-// Copyright (c) 2003 Simon Southwell
+// Copyright (c) 2003-2024 Simon Southwell
 //                                                               
 // This file is part of bmp.
 //
@@ -17,9 +17,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with bmp. If not, see <http://www.gnu.org/licenses/>.
-//
-// $Id: bitmap.c,v 1.4 2010-07-11 10:18:46 simon Exp $
-// $Source: /home/simon/CVS/src/bitmaps/src/bitmap.c,v $
 //
 //=============================================================
 //

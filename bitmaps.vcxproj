@@ -16,8 +16,8 @@
     <ClCompile Include="src\main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\general.h" />
     <ClInclude Include="src\bitmap.h" />
+    <ClInclude Include="src\general.h" />
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
